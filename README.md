@@ -65,9 +65,6 @@ pip install -r requirements.txt
 
 2. **Configure Environment**
 ```bash
-# Copy example environment file
-cp .env.example .env
-
 # Edit .env with your credentials 
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
