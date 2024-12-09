@@ -1,4 +1,4 @@
-### Project Overview
+### Assignment Overview
 This project implements a Python application for processing and analyzing ECMWF  forecast data, focusing on temperature anomalies and extreme weather conditions. Forecast data  was selected as 20240229 and region USA.
 
 ### Implementation Challenges
