@@ -82,8 +82,9 @@ python main.py
 
 ### Analysis Results
 
-#### Temperature Anomalies (Continental US)
+
 ![Temperature Anomalies](output/analysis_plots.png)
+#### Temperature Anomalies (Continental US)
 - Analysis Period: February 29, 2024 - March 6, 2024
 - Maximum positive anomaly: +8.40K
 - Maximum negative anomaly: -8.40K
@@ -91,7 +92,6 @@ python main.py
 
 
 #### High Wind Events
-![Wind Events](output/analysis_plots.png)
 - Maximum wind speed: 19.06 m/s
 - Total high wind locations: 1,321 grid points
 
