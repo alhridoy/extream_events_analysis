@@ -1,5 +1,5 @@
 ### Project Overview
-This project implements a Python application for processing and analyzing ECMWF  forecast data, focusing on temperature anomalies and extreme weather conditions. inditilization of the forecast was chosses as 20240229 and region was selected as USA.
+This project implements a Python application for processing and analyzing ECMWF  forecast data, focusing on temperature anomalies and extreme weather conditions. Forecast data  was selected as 20240229 and region USA.
 
 ### Implementation Challenges
 The most significant challenge was handling ECMWF operational forecast data from S3:
@@ -23,9 +23,9 @@ The most significant challenge was handling ECMWF operational forecast data from
 - Efficient loading of ECMWF IFS forecast data (0.25-degree resolution)
 - Temperature anomaly calculation using WeatherBench2 climatology
 - Identification of extreme weather conditions:
-  - Wind speeds exceeding 15 m/s
-  - Temperature anomalies beyond ±5 K
-- Visualization with Lambert Conformal projection for Continental US
+- Wind speeds exceeding 15 m/s
+- Temperature anomalies beyond ±5 K
+- Visualization with Lambert Conformal projection for US
 
 ### Technical Implementation
 
