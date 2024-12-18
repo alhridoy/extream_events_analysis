@@ -1,22 +1,31 @@
-### Assignment Overview
-This project implements a Python application for processing and analyzing ECMWF  forecast data, focusing on temperature anomalies and extreme weather conditions. Forecast data  was selected as 20240229 and region USA.
+### Overview
+This project implements a Python application for processing and analyzing ECMWF forecast data, focusing on temperature anomalies and extreme weather conditions.
 
-### Implementation Challenges
-The most significant challenge was handling ECMWF operational forecast data from S3:
+### Features
 
-1. **Data Format Complexity**
-   - GRIB2 files required careful handling due to multiple fields and levels
-   - Each forecast step needed separate processing and field extraction
-   - Variable naming conventions differed between GRIB and climatology data
+#### Data Processing
+- Fetches ECMWF (European Centre for Medium-Range Weather Forecasts) forecast data
+- Processes WeatherBench2 climatology data for historical context
+- Handles global temperature and wind data at high resolution
 
-2. **Processing Time Optimization**
-   - Initial loads took 3-5 minutes per forecast step
-   - Implemented parallel processing reducing time to ~45 seconds
-   - Added caching layer for subsequent runs
+#### Analysis Capabilities
+- Calculates temperature anomalies globally
+- Identifies extreme weather events for example wind_speed
+- Detects compound events (multiple extreme conditions occurring simultaneously)
+- Processes wind patterns and their relationship to temperature changes
 
-3. **Data Availability**
-   - Operational forecasts(0.25-degree grid) only available from February 2024
-   - Used February 29, 2024 initialization for analysis
+#### Visualization & Output
+- Generates publication-quality maps and plots
+- Creates detailed CSV reports of extreme event locations
+- Visualizes temperature anomalies with wind overlay
+- Produces compound event analysis maps
+
+#### Technical Features
+- Efficient data caching system
+- AWS S3 integration for data storage (optional)
+- Parallel processing for faster analysis
+- Automated quality control checks
+
    
 
 ### Features Implemented
@@ -83,13 +92,11 @@ python main.py
 ![Temperature Anomalies](output/analysis_plots.png)
 #### Temperature Anomalies (Continental US)
 - Analysis Period: February 29, 2024 - March 6, 2024
-- Maximum positive anomaly: +8.40K
-- Maximum negative anomaly: -8.40K
 - Total extreme locations: 7,031 grid points
 
 
 #### High Wind Events
-- Maximum wind speed: 19.06 m/s
+
 - Total high wind locations: 1,321 grid points
 
 
@@ -97,31 +104,3 @@ python main.py
 ![Compound Events](output/compound_events.png)
 - Locations with both extreme temperature and high winds: 18
 
-### Implementation Answers to Interview Questions
-
-1. **Large Dataset Handling**
-    - Collecting weatherbench2 data was straightforwarded as it was stored in public bucket in zarr format
-    - Collecing data from s3 was the most challening due to file format and processing time. Also operations forecast was avibale after 2024 Feb
-   - Implemented lazy loading with xarray
-   - Used dask for parallel processing
-   - Local caching system for frequently accessed data
-   - Selective variable loading with GRIB filters
-
-2. **Data Transfer Optimization**
-   - Local cache implementation
-   - 6-hourly data selection
-   - Lazy evaluation of operations
-   - Region-specific data loading (Continental US only)
-
-3. **Scalability**
-   - Modular variable mapping system
-   - Configurable processing parameters
-   - Memory-efficient processing pipeline
-   - Extensible data validation system
-
-4. **System Reliability**
-   - Comprehensive error handling
-   - Data validation checks
-   - Detailed logging system
-   - Retry mechanism for cloud storage access
-   - Cache management for failed operations
