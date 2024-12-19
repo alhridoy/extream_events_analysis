@@ -4,9 +4,12 @@ This project implements a Python application for processing and analyzing ECMWF 
 ### Features
 
 #### Data Processing
-- Fetches ECMWF (European Centre for Medium-Range Weather Forecasts) forecast data
-- Processes WeatherBench2 climatology data for historical context
-- Handles global temperature and wind data at high resolution
+- Efficient loading of ECMWF IFS  7 days forecast data (0.25-degree resolution)
+- Temperature anomaly calculation using WeatherBench2 climatology
+- Identification of extreme weather conditions:
+- Wind speeds exceeding 15 m/s
+- Temperature anomalies beyond ±5 K
+
 
 #### Analysis Capabilities
 - Calculates temperature anomalies globally
@@ -20,12 +23,46 @@ This project implements a Python application for processing and analyzing ECMWF 
 - Visualizes temperature anomalies with wind overlay
 - Produces compound event analysis maps
 
-#### Technical Features
-- Efficient data caching system
-- AWS S3 integration for data storage (optional)
-- Parallel processing for faster analysis
-- Automated quality control checks
 
+### Technical Stack
+
+#### Core Technologies
+- Python 3.8+
+- xarray/dask for parallel data processing
+- Cartopy for geospatial visualization
+- NumPy/Pandas for numerical computations
+
+#### Cloud & Storage
+- AWS S3 (boto3) for data storage
+- Google Cloud Storage (gcsfs) for WeatherBench2 data
+- Zarr format for efficient data handling
+- fsspec for cloud storage abstraction
+
+#### Weather Data Processing
+- ECMWF IFS forecast data (0.25° resolution)
+- WeatherBench2 climatology integration
+- GRIB format handling via eccodes
+- Automated data validation and QC
+
+#### Visualization
+- Matplotlib for publication-quality plots
+- Lambert Conformal projection
+- Interactive map generation
+- CSV exports for detailed analysis
+
+#### Performance Features
+- Dask distributed computing
+- Chunked streaming
+- Lazy loading
+- Dynamic memory management
+- Intelligent caching system
+
+#### Monitoring
+- Comprehensive logging
+- Error handling with retries
+- Resource monitoring
+- Health checks for memory, disk, and network
+- Dask cluster status tracking
    
 
 ### Features Implemented
